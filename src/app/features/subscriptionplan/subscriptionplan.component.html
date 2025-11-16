@@ -1,0 +1,28 @@
+<div class="container mt-5">
+  <a [routerLink]="'/dashboard'" class="back-home-btn"> ⬅ Back to Home </a>
+  <h2 class="text-center mb-4">Choose Your Subscription Plan</h2>
+
+  <div class="row">
+    <div class="col-md-4" *ngFor="let plan of plans">
+      <div class="card mb-4">
+        <div class="card-body text-center">
+          <h3 class="card-title">{{ plan.name }}</h3>
+          <h4 class="card-subtitle mb-2 text-muted">
+            $ {{ plan.price }}/Month
+          </h4>
+          <div class="annual-note">{{ plan.membership }}</div>
+          <span class="auto-renewal">{{ plan.auto }}</span>
+          <p class="card-text">{{ plan.description }}</p>
+          <ul class="list-unstyled">
+            <li *ngFor="let feature of plan.featuresList">{{ feature }}</li>
+          </ul>
+          <div
+            #paypalButton
+            id="paypal-button-{{ plan.id }}"
+            class="mt-3"
+          ></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

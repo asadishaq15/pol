@@ -1,0 +1,12 @@
+<ng-container *ngIf="toast | async as toaster">
+    <ngb-toast
+        [class]="toaster.classname"
+        [header]="toaster?.header"
+        [autohide]="true"
+        [delay]="3000"
+        (hidden)="remove()"
+    >
+        {{ toaster.text || 'Internal server error' }}
+    </ngb-toast>
+</ng-container>
+<router-outlet></router-outlet>

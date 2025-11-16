@@ -1,0 +1,14 @@
+<div class="d-flex position-relative">
+  <!-- Sidebar -->
+  <nav class="text-white sidebar py-3" [class.active]="isCollapsed">
+    <app-side-nav [navList]="navList" [activeItem]="activeItem"> </app-side-nav>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="main-content flex-grow-1 px-5">
+    <app-header [activeItem]="activeItem"></app-header>
+    <div class="pt-0 pb-5">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

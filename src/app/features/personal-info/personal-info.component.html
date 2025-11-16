@@ -1,0 +1,160 @@
+<div class="personal-info">
+  <div class="container">
+    <div class="profile-pic mx-auto my-3 position-relative">
+      <div class="w-100">
+        <img
+          *ngIf="!imageUrl"
+          src="../../../assets/images/user-default-image.svg"
+        />
+        <img *ngIf="imageUrl" [src]="imageUrl" alt="Fetched Image" />
+      </div>
+      <button
+        type="button"
+        class="btn position-absolute bg-yellow border-0"
+        (click)="fileInput.click()"
+      >
+        <img src="../../../assets/icons/form/camera-broken.svg" />
+      </button>
+      <input
+        type="file"
+        #fileInput
+        accept="image/*"
+        id="profile-pic-input"
+        class="d-none"
+        (change)="uploadFile(fileInput.files)"
+      />
+    </div>
+
+    <form [formGroup]="personalInfoForm" (submit)="submit()">
+      <div class="row mb-3">
+        <div class="col-12 col-lg-6">
+          <label for="first_name" class="col-form-label">First Name</label>
+          <input
+            type="text"
+            placeholder="First Name"
+            class="form-control"
+            id="first_name"
+            formControlName="first_name"
+          />
+        </div>
+        <div class="col-12 col-lg-6">
+          <label for="last_name" class="col-form-label">Last Name</label>
+          <input
+            type="text"
+            placeholder="Last Name"
+            class="form-control"
+            id="last_name"
+            formControlName="last_name"
+          />
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-12 col-lg-6">
+          <label for="email" class="col-form-label">Email</label>
+          <div class="form-control email" id="email" aria-disabled="true">
+            {{ personalInfoForm.value?.email || "" }}
+          </div>
+        </div>
+        <div class="col-12 col-lg-6">
+          <label for="phone_number" class="col-form-label">Phone Number</label>
+          <input
+            type="text"
+            placeholder="Phone Number"
+            class="form-control"
+            id="phone_number"
+            formControlName="phone_number"
+          />
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="address" class="col-form-label">Address</label>
+        <input
+          type="text"
+          placeholder="Address"
+          class="form-control"
+          id="address"
+          formControlName="address"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="permanent_address" class="col-form-label"
+          >Permanent Address</label
+        >
+        <input
+          type="text"
+          placeholder="Permanent Address"
+          class="form-control"
+          id="permanent_address"
+          formControlName="permanent_address"
+        />
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-12 col-lg-6">
+          <label for="password" class="col-form-label">Password</label>
+          <div class="input-group">
+            <input
+              type="{{ showPassword ? 'text' : 'password' }}"
+              placeholder="Password"
+              class="form-control"
+              id="password"
+              formControlName="hashed_password"
+            />
+            <span class="input-group-text">
+              <img
+                width="24"
+                [src]="
+                  showPassword
+                    ? '../../../assets/icons/form/eye-show.svg'
+                    : '../../../assets/icons/form/eye-hide.svg'
+                "
+                (click)="showPassword = !showPassword"
+              />
+            </span>
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-6">
+          <label for="date_of_birth" class="col-form-label"
+            >Date of birth</label
+          >
+          <div class="input-group position-relative mb-3">
+            <input
+              class="form-control pe-5"
+              placeholder="DD/MM/YYYY"
+              name="date_of_birth"
+              formControlName="date_of_birth"
+              ngbDatepicker
+              #dob="ngbDatepicker"
+              readonly
+            />
+            <span class="input-group-text" (click)="dob.toggle()">
+              <img src="../../../../assets/icons/form/calender.svg" />
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer d-flex justify-content-between mb-4">
+        <div>
+          <button
+            type="button"
+            class="btn submit-button"
+            (click)="upgradePlan()"
+          >
+            Upgrade Plan
+          </button>
+        </div>
+        <div class="d-flex justify-content-end">
+          <button type="submit" class="btn submit-button me-3">Save</button>
+          <button type="button" class="btn btn-secondary" (click)="cancel()">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

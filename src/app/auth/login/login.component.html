@@ -1,0 +1,41 @@
+<form [formGroup]="loginForm" class="loginForm" (submit)="login()">
+  <div class="my-2">
+    <label for="email" class="col-form-label text-white">Email</label>
+    <input
+      type="email"
+      placeholder="Email"
+      class="form-control"
+      id="email"
+      formControlName="email"
+    />
+  </div>
+  <div class="my-2">
+    <label for="password" class="col-form-label text-white">Password</label>
+    <input
+      type="password"
+      placeholder="Password"
+      class="form-control"
+      id="password"
+      formControlName="password"
+    />
+  </div>
+
+  <div class="my-3 text-end">
+    <a
+      class="text-yellow text-decoration-none"
+      [routerLink]="['/auth/forget-password']"
+      >Forget Password?</a
+    >
+  </div>
+
+  <div class="my-3">
+    <button type="submit" class="btn secondary-button w-100">Sign in</button>
+  </div>
+
+  <div class="mt-4 text-center text-white">
+    Don't have an Account?
+    <a class="text-yellow text-decoration-none" (click)="goToRegister()"
+      >Create Account</a
+    >
+  </div>
+</form>

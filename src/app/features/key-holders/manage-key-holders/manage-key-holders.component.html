@@ -1,0 +1,141 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ data.name }} Key Holder</h4>
+  <button type="button" class="btn" aria-label="Close" (click)="closeModal()">
+    <img src="../../../../assets/icons/form/close-lg.svg" />
+  </button>
+</div>
+
+<form [formGroup]="keyHolderForm" (submit)="submit()">
+  <div class="modal-body manage-key-holder mx-4">
+    <div class="profile-pic mx-auto my-3 position-relative">
+      <div class="w-100">
+        <img
+          *ngIf="!imageUrl"
+          src="../../../assets/images/user-default-image.svg"
+        />
+        <img *ngIf="imageUrl" [src]="imageUrl" alt="Fetched Image" />
+      </div>
+      <button
+        type="button"
+        class="btn position-absolute bg-yellow border-0"
+        (click)="fileInput.click()"
+      >
+        <img src="../../../assets/icons/form/camera-broken.svg" />
+      </button>
+      <input
+        type="file"
+        #fileInput
+        accept="image/*"
+        id="profile-pic-input"
+        formControlName="file"
+        class="d-none"
+        (change)="onFileChange(fileInput.files)"
+      />
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-12 col-lg-6">
+        <label for="first_name" class="col-form-label">First Name</label>
+        <input
+          type="text"
+          placeholder="First Name"
+          class="form-control"
+          id="first_name"
+          formControlName="first_name"
+        />
+      </div>
+      <div class="col-12 col-lg-6">
+        <label for="last_name" class="col-form-label">Last Name</label>
+        <input
+          type="text"
+          placeholder="Last Name"
+          class="form-control"
+          id="last_name"
+          formControlName="last_name"
+        />
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-12 col-lg-6">
+        <label for="email" class="col-form-label">Email</label>
+        <input
+          type="email"
+          placeholder="Email"
+          class="form-control"
+          id="email"
+          formControlName="email"
+        />
+      </div>
+      <div class="col-12 col-lg-6">
+        <label for="phone_number" class="col-form-label">Phone Number</label>
+        <input
+          type="text"
+          placeholder="Phone Number"
+          class="form-control"
+          id="phone_number"
+          formControlName="phone_number"
+        />
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="address" class="col-form-label">Relation</label>
+      <select class="form-select" id="relation" formControlName="relation">
+        <option value="">Select</option>
+        <option *ngFor="let relation of relationList" value="{{ relation }}">
+          {{ relation }}
+        </option>
+      </select>
+    </div>
+
+    <!-- <div class="mb-3">
+            <label for="address" class="col-form-label">Address</label>
+            <input type="text" placeholder="Address" class="form-control" id="address"
+                formControlName="address">
+        </div> -->
+    <div class="mb-3">
+      <label class="col-form-label">Street Address</label>
+      <input
+        type="text"
+        placeholder="123 Main St"
+        class="form-control"
+        formControlName="street"
+      />
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-12 col-lg-4">
+        <label class="col-form-label">City</label>
+        <input
+          type="text"
+          placeholder="City"
+          class="form-control"
+          formControlName="city"
+        />
+      </div>
+      <div class="col-12 col-lg-4">
+        <label class="col-form-label">State</label>
+        <input
+          type="text"
+          placeholder="State"
+          class="form-control"
+          formControlName="state"
+        />
+      </div>
+      <div class="col-12 col-lg-4">
+        <label class="col-form-label">ZIP Code</label>
+        <input
+          type="text"
+          placeholder="ZIP Code"
+          class="form-control"
+          formControlName="zip"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer d-flex justify-content-end">
+    <button type="submit" class="btn submit-button">Save</button>
+  </div>
+</form>

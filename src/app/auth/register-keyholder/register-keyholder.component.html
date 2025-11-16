@@ -1,0 +1,13 @@
+<form [formGroup]="loginKeyHolderForm" class="loginKeyHolderForm" (submit)="submit()">
+
+    <div class="my-2">
+        <label for="pin" class="col-form-label text-white">Enter PIN</label>
+        <input type="text" placeholder="Enter PIN" class="form-control" id="pin"
+        formControlName="pin">
+    </div>
+    
+    <div class="mt-4 mb-3">
+        <button type="submit" class="btn secondary-button w-100">Login</button>
+    </div>
+
+</form>

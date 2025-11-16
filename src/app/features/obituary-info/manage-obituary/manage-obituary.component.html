@@ -1,0 +1,290 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ data.name }} Obituary Information</h4>
+  <button type="button" class="btn" aria-label="Close" (click)="closeModal()">
+    <img src="../../../../assets/icons/form/close-lg.svg" />
+  </button>
+</div>
+
+<form [formGroup]="obituaryForm" (submit)="submit()">
+  <div class="modal-body">
+    <!-- Basic Information -->
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="birth_name" class="col-form-label">Birth Name*</label>
+          <input
+            type="text"
+            class="form-control"
+            [class.is-invalid]="
+              obituaryForm.get('birth_name')?.touched &&
+              obituaryForm.get('birth_name')?.invalid
+            "
+            id="birth_name"
+            formControlName="birth_name"
+          />
+          <div
+            class="invalid-feedback"
+            *ngIf="obituaryForm.get('birth_name')?.errors?.['required'] && obituaryForm.get('birth_name')?.touched"
+          >
+            Birth name is required
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="married_name" class="col-form-label">Married Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="married_name"
+            formControlName="married_name"
+          />
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="current_name" class="col-form-label">Current Name*</label>
+          <input
+            type="text"
+            class="form-control"
+            [class.is-invalid]="
+              obituaryForm.get('current_name')?.touched &&
+              obituaryForm.get('current_name')?.invalid
+            "
+            id="current_name"
+            formControlName="current_name"
+          />
+          <div
+            class="invalid-feedback"
+            *ngIf="obituaryForm.get('current_name')?.errors?.['required'] && obituaryForm.get('current_name')?.touched"
+          >
+            Current name is required
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="birth_date" class="col-form-label">Birth Date*</label>
+          <input
+            type="date"
+            class="form-control"
+            [class.is-invalid]="
+              obituaryForm.get('birth_date')?.touched &&
+              obituaryForm.get('birth_date')?.invalid
+            "
+            id="birth_date"
+            formControlName="birth_date"
+          />
+          <div
+            class="invalid-feedback"
+            *ngIf="obituaryForm.get('birth_date')?.errors?.['required'] && obituaryForm.get('birth_date')?.touched"
+          >
+            Birth date is required
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="birth_place" class="col-form-label">Birth Place*</label>
+          <input
+            type="text"
+            class="form-control"
+            [class.is-invalid]="
+              obituaryForm.get('birth_place')?.touched &&
+              obituaryForm.get('birth_place')?.invalid
+            "
+            id="birth_place"
+            formControlName="birth_place"
+          />
+          <div
+            class="invalid-feedback"
+            *ngIf="obituaryForm.get('birth_place')?.errors?.['required'] && obituaryForm.get('birth_place')?.touched"
+          >
+            Birth place is required
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="parent_names" class="col-form-label"
+            >Parents Names*</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            [class.is-invalid]="
+              obituaryForm.get('parent_names')?.touched &&
+              obituaryForm.get('parent_names')?.invalid
+            "
+            id="parent_names"
+            formControlName="parent_names"
+          />
+          <div
+            class="invalid-feedback"
+            *ngIf="obituaryForm.get('parent_names')?.errors?.['required'] && obituaryForm.get('parent_names')?.touched"
+          >
+            Parents names are required
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="spouse_name" class="col-form-label">Spouse Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="spouse_name"
+            formControlName="spouse_name"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Children Section -->
+    <div class="card mb-3">
+      <div
+        class="card-header d-flex justify-content-between align-items-center"
+      >
+        <h5>Children</h5>
+        <button
+          type="button"
+          class="btn btn-sm btn-success"
+          (click)="addChild()"
+        >
+          Add Child
+        </button>
+      </div>
+      <div class="card-body">
+        <div formArrayName="children">
+          <div
+            *ngFor="let child of childrenArray.controls; let i = index"
+            [formGroupName]="i"
+            class="row mb-2"
+          >
+            <div class="col-md-5">
+              <input
+                type="text"
+                class="form-control"
+                [class.is-invalid]="
+                  child.get('name')?.touched && child.get('name')?.invalid
+                "
+                placeholder="Name"
+                formControlName="name"
+              />
+              <div
+                class="invalid-feedback"
+                *ngIf="child.get('name')?.errors?.['required'] && child.get('name')?.touched"
+              >
+                Child name is required
+              </div>
+            </div>
+            <div class="col-md-5">
+              <input
+                type="date"
+                class="form-control"
+                [class.is-invalid]="
+                  child.get('dateOfBirth')?.touched &&
+                  child.get('dateOfBirth')?.invalid
+                "
+                formControlName="dateOfBirth"
+              />
+              <div
+                class="invalid-feedback"
+                *ngIf="child.get('dateOfBirth')?.errors?.['required'] && child.get('dateOfBirth')?.touched"
+              >
+                Date of birth is required
+              </div>
+            </div>
+            <div class="col-md-2">
+              <button
+                type="button"
+                class="btn btn-danger btn-sm"
+                (click)="removeChild(i)"
+              >
+                Remove
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Siblings Section -->
+    <div class="card mb-3">
+      <div
+        class="card-header d-flex justify-content-between align-items-center"
+      >
+        <h5>Siblings</h5>
+        <button
+          type="button"
+          class="btn btn-sm btn-success"
+          (click)="addSibling()"
+        >
+          Add Sibling
+        </button>
+      </div>
+      <div class="card-body">
+        <div formArrayName="siblings">
+          <div
+            *ngFor="let sibling of siblingsArray.controls; let i = index"
+            [formGroupName]="i"
+            class="row mb-2"
+          >
+            <div class="col-md-5">
+              <input
+                type="text"
+                class="form-control"
+                [class.is-invalid]="
+                  sibling.get('name')?.touched && sibling.get('name')?.invalid
+                "
+                placeholder="Name"
+                formControlName="name"
+              />
+              <div
+                class="invalid-feedback"
+                *ngIf="sibling.get('name')?.errors?.['required'] && sibling.get('name')?.touched"
+              >
+                Sibling name is required
+              </div>
+            </div>
+            <div class="col-md-5">
+              <div class="form-check mt-2">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  formControlName="isAlive"
+                />
+                <label class="form-check-label">Is Alive</label>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <button
+                type="button"
+                class="btn btn-danger btn-sm"
+                (click)="removeSibling(i)"
+              >
+                Remove
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!obituaryForm.valid"
+    >
+      {{ data?.item?.id ? "Update" : "Save" }}
+    </button>
+  </div>
+</form>

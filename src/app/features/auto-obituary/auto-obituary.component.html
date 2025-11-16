@@ -1,0 +1,95 @@
+<!-- src/app/pages/auto-obituary/auto-obituary.component.html -->
+<div class="page-container">
+  <app-hero title="Auto-Obituary" bgImage="assets/auto-orbituary.jpg"></app-hero>
+  <app-nav-bar></app-nav-bar>
+  <section class="content-section" @fadeInOnScroll>
+    <div class="container">
+      <div class="key-holder-row">
+        <div class="key-holder-card">
+          <div class="icon-container">
+            <img
+              src="assets/icons/side-bar/key-holders.svg"
+              alt="Key Holder Icon"
+            />
+          </div>
+          <h2>Key holder</h2>
+          <p>
+            Enter information for up to 2 keyholders. A Keyholder should be
+            someone you trust to carry out your final wishes for your homegoing
+            services. Complete the key holder information and an email will be
+            sent to verify their acceptance. Keyholders will be allowed access
+            to the account with viewing and printing capability only. They are
+            not editing ability.
+          </p>
+          <div class="learn-more">
+            <a routerLink="/obituary" (click)="scrollToTop()"
+              >Learn more <span class="icon">↗</span></a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="form-plan-row">
+        <div class="obituary-plan">
+          <h2>Auto-Obituary Plan</h2>
+          <div class="price">
+            <span class="dollar">$</span>
+            <span class="amount">0</span>
+          </div>
+          <p>
+            Includes basic obituary information to be place in your funeral
+            program.
+          </p>
+          <div class="form-fields">
+            <div class="form-field">Birth Name</div>
+            <div class="form-field">Married Name</div>
+            <div class="form-field">Current Name</div>
+            <div class="form-field">Birth Date</div>
+            <div class="form-field">Birth Place</div>
+            <div class="form-field">Parents Names</div>
+            <div class="form-field">Spouse Name</div>
+            <div class="form-field">Child(rens) Names Date of Birth</div>
+            <div class="form-field">Name of Siblings (Alive/Deceased)</div>
+          </div>
+          <div class="cta-button">
+            <button class="black-btn" (click)="scrollToTop()">
+              Get It Now!
+            </button>
+          </div>
+        </div>
+        <div class="obituary-form">
+          <h2>Auto-Obituary Form</h2>
+          <form>
+            <input type="text" placeholder="Birth Name" />
+            <input type="text" placeholder="Married Name" />
+            <input type="text" placeholder="Current Name" />
+            <input type="text" placeholder="Birth Date" />
+            <input type="text" placeholder="Parents Name" />
+            <input type="text" placeholder="Spouse Name" />
+            <input type="text" placeholder="Child(ren) Name" />
+            <input
+              type="text"
+              placeholder="Name of Siblings (Alive/Deceased)"
+            />
+            <button
+              type="submit"
+              class="gradient-green"
+              (click)="scrollToTop()"
+            >
+              Get It Now!
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="upgrade-section" @fadeInOnScroll>
+    <div class="container">
+      <div class="upgrade-button-container">
+        <button class="gradient-orange" (click)="goToPage()">
+          Upgrade Your Plan
+        </button>
+      </div>
+    </div>
+  </section>
+</div>
+<app-footer></app-footer>
